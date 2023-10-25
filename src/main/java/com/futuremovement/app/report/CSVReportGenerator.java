@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
+import static com.opencsv.CSVWriter.NO_QUOTE_CHARACTER;
+
 @Component
 public class CSVReportGenerator implements ReportGenerator {
     @Override
     public void generate(List<TradeSummary> tradeSummaries, Writer streamWriter) throws IOException {
         String[] headers = { "Client_Information","Product_Information","Total_Transaction_Amount"};
-        CSVWriter writer = new CSVWriter(streamWriter, ',');
+        CSVWriter writer = new CSVWriter(streamWriter, ',', NO_QUOTE_CHARACTER);
         writer.writeNext(headers);
         tradeSummaries.forEach(summary -> {
             writer.writeNext(new String[] {getClientInformation(summary), getProductInformation(summary), summary.getQuantity().toString()});
