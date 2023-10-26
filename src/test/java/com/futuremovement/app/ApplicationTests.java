@@ -19,7 +19,7 @@ class ApplicationTests {
 	@Test
 	void shouldReturnReport() {
 		Assertions.assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/summaryReport",
-				String.class)).contains("\"Client_Information\",\"Product_Information\",\"Total_Transaction_Amount\"\n" +
-				"\"CL432100020001\",\"SGXFUNK20100910\",\"4\"\n");
+				String.class)).contains("Client_Information,Product_Information,Total_Transaction_Amount\n" +
+				"CL432100020001,SGXFUNK20100910,4\n");
 	}
 }

@@ -28,9 +28,9 @@ public class CSVReportGeneratorTest {
 
         reportGenerator.generate(List.of(t1, t2), writer);
         String str = stream.toString("UTF-8");
-        assertEquals("\"Client_Information\",\"Product_Information\",\"Total_Transaction_Amount\"\n" +
-                "\"CL432100020001\",\"SGXFUNK20100910\",\"20\"\n" +
-                "\"CL123400020001\",\"CMEFUN120100910\",\"10\"\n", str);
+        assertEquals("Client_Information,Product_Information,Total_Transaction_Amount\n" +
+                "CL432100020001,SGXFUNK20100910,20\n" +
+                "CL123400020001,CMEFUN120100910,10\n", str);
     }
 
     private static TradeSummary getTradeSummary(String clientNumber, String exchangeCode, String symbol, Long qty) {
