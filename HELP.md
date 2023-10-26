@@ -26,4 +26,5 @@ npm install
 npm start
 
 ### View the webapp
-http://localhost:4200/report
+http://localhost:4200/
+
