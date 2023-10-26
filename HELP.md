@@ -26,6 +26,8 @@ npm install
 npm start
 
 ### View the webapp
+Make sure the api is running at port 8080 and then go to the webapp at
+
 http://localhost:4200/
 
 
