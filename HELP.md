@@ -14,13 +14,16 @@ http://localhost:8080/summaryReport
 ## Create Docker Image
 docker build -t future-movement-docker:latest .
 
-## Run Docker Image
+### Run Docker Image
 docker run -p 8080:8080 future-movement-docker:latest   
 
 
-### Angular app
+## Angular app
 To run the angular app go to src/main/frontend/trade-summary and execute
 
 npm install
+
 npm start
 
+### View the webapp
+http://localhost:4200/report
