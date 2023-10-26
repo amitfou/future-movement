@@ -2,6 +2,8 @@ package com.futuremovement.app.aggregate;
 
 import com.futuremovement.app.domain.Trade;
 import com.futuremovement.app.domain.TradeSummary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -10,8 +12,11 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 @Component
 public class TradeAggregatorImpl implements TradeAggregator {
+    private static Logger LOG = LoggerFactory.getLogger(TradeAggregatorImpl.class);
+
     @Override
     public List<TradeSummary> aggregate(List<Trade> trades) {
+        LOG.info("Received {} trades to aggregate.", trades.size());
         Collection<TradeSummary> values = trades
                 .parallelStream()
                 .collect(Collectors.groupingBy(
@@ -24,7 +29,9 @@ public class TradeAggregatorImpl implements TradeAggregator {
                                 }
                         )
                 )).values();
-        return values.stream().toList();
+        List<TradeSummary> list = values.stream().toList();
+        LOG.info("After aggregation total summary records {}.", list.size());
+        return list;
     }
 
     private static void accumulate(TradeSummary tradeSummary, Trade trade) {
