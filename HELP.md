@@ -26,5 +26,25 @@ npm install
 npm start
 
 ### View the webapp
+Make sure the api is running at port 8080 and then go to the webapp at
+
 http://localhost:4200/
 
+
+## To deploy to Kubernetes
+Make sure you have minikube running locally and you have already created the docker image.
+
+Run the below command to deploy to minikube
+
+kubectl apply -f deployment.yaml 
+
+### check the deployment
+
+kubectl get deployments
+
+### Access the api
+Run below command to check the url
+
+minikube service future-movement-service
+
+Access the url to call the api, make sure you add the context path /summaryReport
